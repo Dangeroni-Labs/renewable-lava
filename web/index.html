@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+        name="description"
+        content="Renewable Lava - vanilla-style renewable lava source generation for Minecraft."
+    />
+
+    <meta
+        name="theme-color"
+        content="#111315"
+    />
+
+    <title>Renewable Lava</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="./assets/logo.png"
+    />
+
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a
+                class="brand"
+                href="./index.html"
+            >
+                Renewable Lava
+            </a>
+
+            <nav
+                class="nav"
+                aria-label="Main navigation"
+            >
+                <a
+                    href="https://dangeroni-labs.github.io/"
+                >
+                    Dangeroni Labs
+                </a>
+
+                <a
+                    href="https://github.com/Dangeroni-Labs/renewable-lava"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    GitHub
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page">
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">
+                        Minecraft utility
+                    </p>
+
+                    <h1>
+                        Lava,
+                        <br />
+                        now renewable.
+                    </h1>
+
+                    <p class="hero-description">
+                        Renewable Lava brings water-style source generation
+                        to lava. Place two source blocks correctly and build
+                        renewable lava pools that regenerate naturally using
+                        Minecraft's existing fluid behavior.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a
+                            class="button button-primary"
+                            href="https://github.com/Dangeroni-Labs/renewable-lava/releases"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Download
+                        </a>
+
+                        <a
+                            class="button"
+                            href="https://github.com/Dangeroni-Labs/renewable-lava"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Source ↗
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-meta">
+                    <div>
+                        <span>Version</span>
+                        <strong>0.1.0</strong>
+                    </div>
+
+                    <div>
+                        <span>Minecraft</span>
+                        <strong>26.2</strong>
+                    </div>
+
+                    <div>
+                        <span>Loader</span>
+                        <strong>Fabric</strong>
+                    </div>
+
+                    <div>
+                        <span>License</span>
+                        <strong>MIT</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section demo">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        Demo
+                    </p>
+
+                    <h2>
+                        Works like water.
+                    </h2>
+
+                    <p>
+                        Renewable sources are created through the same
+                        familiar neighbour-based concept used by vanilla
+                        water, without changing lava flow speed.
+                    </p>
+                </div>
+
+                <figure class="demo-frame">
+                    <img
+                        src=""
+                        alt="Renewable Lava gameplay demonstration"
+                    />
+                </figure>
+            </section>
+
+            <section class="section">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        How it works
+                    </p>
+
+                    <h2>
+                        Two sources are enough.
+                    </h2>
+                </div>
+
+                <div class="steps">
+                    <article class="step">
+                        <span>01</span>
+
+                        <h3>
+                            Place lava
+                        </h3>
+
+                        <p>
+                            Put two lava source blocks diagonally inside
+                            a 2×2 area, just like you would when creating
+                            an infinite water source.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <span>02</span>
+
+                        <h3>
+                            Let it flow
+                        </h3>
+
+                        <p>
+                            Lava spreads normally. Once a flowing block
+                            has enough horizontal source neighbours,
+                            it becomes a source itself.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <span>03</span>
+
+                        <h3>
+                            Take lava
+                        </h3>
+
+                        <p>
+                            Once the pool is filled with source blocks,
+                            you can collect lava and valid missing sources
+                            regenerate naturally.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        Example
+                    </p>
+
+                    <h2>
+                        Familiar source behavior.
+                    </h2>
+                </div>
+
+                <div class="example-grid">
+                    <div class="example">
+                        <p class="example-label">
+                            Start
+                        </p>
+
+                        <div
+                            class="source-grid"
+                            aria-label="Two diagonal lava source blocks"
+                        >
+                            <span class="source-block source">
+                                S
+                            </span>
+
+                            <span class="source-block">
+                                ·
+                            </span>
+
+                            <span class="source-block">
+                                ·
+                            </span>
+
+                            <span class="source-block source">
+                                S
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="example">
+                        <p class="example-label">
+                            Renewable pool
+                        </p>
+
+                        <div
+                            class="source-grid"
+                            aria-label="Four lava source blocks"
+                        >
+                            <span class="source-block source">
+                                S
+                            </span>
+
+                            <span class="source-block source">
+                                S
+                            </span>
+
+                            <span class="source-block source">
+                                S
+                            </span>
+
+                            <span class="source-block source">
+                                S
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        Behavior
+                    </p>
+
+                    <h2>
+                        Small by design.
+                    </h2>
+                </div>
+
+                <div class="feature-list">
+                    <article>
+                        <span>01</span>
+
+                        <h3>
+                            Vanilla-like
+                        </h3>
+
+                        <p>
+                            Source generation is based on nearby horizontal
+                            lava source blocks rather than custom pool shapes
+                            or artificial fluid simulation.
+                        </p>
+                    </article>
+
+                    <article>
+                        <span>02</span>
+
+                        <h3>
+                            Any pool size
+                        </h3>
+
+                        <p>
+                            Renewable behavior is not limited to 2×2 pools.
+                            Larger source pools can regenerate individual
+                            missing blocks when the neighbour requirements
+                            are satisfied.
+                        </p>
+                    </article>
+
+                    <article>
+                        <span>03</span>
+
+                        <h3>
+                            Normal lava
+                        </h3>
+
+                        <p>
+                            Lava keeps its normal flow speed, water
+                            interactions, bucket behavior, and other
+                            vanilla mechanics.
+                        </p>
+                    </article>
+
+                    <article>
+                        <span>04</span>
+
+                        <h3>
+                            Server-side
+                        </h3>
+
+                        <p>
+                            Source creation is controlled by the server,
+                            making the mechanic suitable for both
+                            singleplayer and multiplayer worlds.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section config">
+                <div class="config-copy">
+                    <p class="eyebrow">
+                        Configuration
+                    </p>
+
+                    <div class="section-heading">
+                        <h2>
+                            Keep control of the rules.
+                        </h2>
+                    </div>
+
+                    <p>
+                        Renewable Lava includes lightweight server-side
+                        configuration and per-world control. Fabric users
+                        can also edit the main settings directly through
+                        Mod Menu.
+                    </p>
+
+                    <div class="config-list">
+                        <div class="config-item">
+                            <span>
+                                Enabled
+                            </span>
+
+                            <strong>
+                                On / Off
+                            </strong>
+                        </div>
+
+                        <div class="config-item">
+                            <span>
+                                Source neighbours
+                            </span>
+
+                            <strong>
+                                2–4
+                            </strong>
+                        </div>
+
+                        <div class="config-item">
+                            <span>
+                                Dimensions
+                            </span>
+
+                            <strong>
+                                Whitelist
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <span>
+                    A Dangeroni Labs project
+                </span>
+
+                <div>
+                    <a
+                        href="https://dangeroni-labs.github.io/"
+                    >
+                        Dangeroni Labs
+                    </a>
+
+                    <a
+                        href="https://github.com/Dangeroni-Labs/renewable-lava"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
