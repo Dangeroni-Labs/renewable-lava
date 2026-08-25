@@ -47,4 +47,21 @@ class RenewableLavaConfigTest {
 		assertTrue(config.isDimensionWhitelisted(Identifier.withDefaultNamespace("the_nether")));
 		assertFalse(config.isDimensionWhitelisted(Identifier.withDefaultNamespace("overworld")));
 	}
+
+	@Test
+	void parsesWhitelistDimensionsFromCommaSeparatedText() {
+		assertEquals(
+			java.util.List.of("minecraft:overworld", "minecraft:the_nether", "example:moon"),
+			RenewableLavaConfig.parseWhitelistDimensions(" minecraft:overworld, minecraft:the_nether ,, example:moon ,minecraft:overworld ")
+		);
+	}
+
+	@Test
+	void reportsFirstInvalidWhitelistDimension() {
+		assertEquals(
+			"bad id",
+			RenewableLavaConfig.findInvalidWhitelistDimension(java.util.List.of("minecraft:overworld", "bad id", "example:moon")).orElseThrow()
+		);
+		assertTrue(RenewableLavaConfig.findInvalidWhitelistDimension(java.util.List.of("minecraft:overworld", "example:moon")).isEmpty());
+	}
 }

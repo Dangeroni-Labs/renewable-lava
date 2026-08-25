@@ -18,6 +18,9 @@
 	"entrypoints": {
 		"main": [
 			"dev.dangeroni.renewablelava.RenewableLava"
+		],
+		"modmenu": [
+			"dev.dangeroni.renewablelava.client.RenewableLavaModMenu"
 		]
 	},
 	"mixins": [

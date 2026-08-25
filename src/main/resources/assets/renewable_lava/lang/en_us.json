@@ -1,5 +1,15 @@
 {
 	"modmenu.nameTranslation.renewable_lava": "Renewable Lava",
 	"modmenu.summaryTranslation.renewable_lava": "Vanilla-style renewable lava source generation.",
-	"modmenu.descriptionTranslation.renewable_lava": "Allows lava to form renewable source pools using vanilla-like water source mechanics."
+	"modmenu.descriptionTranslation.renewable_lava": "Allows lava to form renewable source pools using vanilla-like water source mechanics.",
+	"renewable_lava.config.title": "Renewable Lava",
+	"renewable_lava.config.enabled": "Enabled",
+	"renewable_lava.config.enabled.tooltip": "Globally enables or disables renewable lava source generation.",
+	"renewable_lava.config.required_source_neighbours": "Required source neighbours",
+	"renewable_lava.config.required_source_neighbours.tooltip": "Horizontal lava source blocks required to create a new source.",
+	"renewable_lava.config.whitelist_dimensions": "Whitelisted dimensions",
+	"renewable_lava.config.whitelist_dimensions.tooltip": "Comma-separated dimension IDs that can generate renewable lava.",
+	"renewable_lava.config.invalid_dimension": "Invalid dimension ID: %s",
+	"renewable_lava.config.server_only": "Server configuration can only be changed on the server.",
+	"renewable_lava.config.save_failed": "Failed to save Renewable Lava config."
 }

@@ -15,9 +15,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resources.Identifier;
+import org.jspecify.annotations.Nullable;
 
 public final class RenewableLavaConfig {
 	public static final boolean DEFAULT_ENABLED = true;
@@ -45,6 +47,25 @@ public final class RenewableLavaConfig {
 
 	public static synchronized void load() {
 		current = load(FabricLoader.getInstance().getConfigDir().resolve(CONFIG_FILE_NAME));
+	}
+
+	public static synchronized SaveResult save(boolean enabled, int requiredSourceNeighbours, List<String> whitelistDimensions) {
+		DimensionValidation validation = validateWhitelistDimensions(whitelistDimensions);
+		if (validation.invalidDimensionId() != null) {
+			return SaveResult.invalidResult(validation.invalidDimensionId());
+		}
+
+		RenewableLavaConfig updated = new RenewableLavaConfig(
+			enabled,
+			sanitizeRequiredSourceNeighbours(requiredSourceNeighbours),
+			validation.whitelistDimensions()
+		);
+		if (!write(FabricLoader.getInstance().getConfigDir().resolve(CONFIG_FILE_NAME), updated)) {
+			return SaveResult.writeFailedResult();
+		}
+
+		current = updated;
+		return SaveResult.successResult();
 	}
 
 	static synchronized RenewableLavaConfig load(Path path) {
@@ -103,12 +124,32 @@ public final class RenewableLavaConfig {
 		return this.whitelistDimensions.contains(dimensionId);
 	}
 
+	public List<String> whitelistDimensionIds() {
+		return this.whitelistDimensions.stream().map(Identifier::toString).toList();
+	}
+
 	Set<Identifier> whitelistDimensions() {
 		return this.whitelistDimensions;
 	}
 
 	static int sanitizeRequiredSourceNeighbours(int value) {
 		return Math.clamp(value, 2, 4);
+	}
+
+	public static List<String> parseWhitelistDimensions(String rawDimensions) {
+		LinkedHashSet<String> dimensionIds = new LinkedHashSet<>();
+		for (String token : rawDimensions.split(",")) {
+			String trimmed = token.trim();
+			if (!trimmed.isEmpty()) {
+				dimensionIds.add(trimmed);
+			}
+		}
+
+		return List.copyOf(dimensionIds);
+	}
+
+	public static Optional<String> findInvalidWhitelistDimension(List<String> dimensionIds) {
+		return Optional.ofNullable(validateWhitelistDimensions(dimensionIds).invalidDimensionId());
 	}
 
 	static Set<Identifier> sanitizeWhitelistDimensions(List<String> dimensionIds) {
@@ -130,6 +171,20 @@ public final class RenewableLavaConfig {
 		}
 
 		return whitelist;
+	}
+
+	private static DimensionValidation validateWhitelistDimensions(List<String> dimensionIds) {
+		LinkedHashSet<Identifier> whitelist = new LinkedHashSet<>();
+		for (String dimensionId : dimensionIds) {
+			Identifier parsed = Identifier.tryParse(dimensionId);
+			if (parsed == null) {
+				return new DimensionValidation(Set.of(), dimensionId);
+			}
+
+			whitelist.add(parsed);
+		}
+
+		return new DimensionValidation(Set.copyOf(whitelist), null);
 	}
 
 	private static boolean readEnabled(JsonObject root) {
@@ -186,13 +241,20 @@ public final class RenewableLavaConfig {
 	}
 
 	private static void writeDefaults(Path path, RenewableLavaConfig config) {
+		if (!write(path, config)) {
+			RenewableLava.LOGGER.warn("Failed to create default renewable lava config at {}.", path);
+		}
+	}
+
+	private static boolean write(Path path, RenewableLavaConfig config) {
 		try {
 			Files.createDirectories(path.getParent());
 			try (Writer writer = Files.newBufferedWriter(path)) {
 				GSON.toJson(config.toJson(), writer);
 			}
+			return true;
 		} catch (IOException exception) {
-			RenewableLava.LOGGER.warn("Failed to create default renewable lava config at {}.", path);
+			return false;
 		}
 	}
 
@@ -208,5 +270,22 @@ public final class RenewableLavaConfig {
 
 		root.add("whitelistDimensions", whitelist);
 		return root;
+	}
+
+	public record DimensionValidation(Set<Identifier> whitelistDimensions, @Nullable String invalidDimensionId) {
+	}
+
+	public record SaveResult(boolean success, @Nullable String invalidDimensionId) {
+		public static SaveResult successResult() {
+			return new SaveResult(true, null);
+		}
+
+		public static SaveResult invalidResult(String invalidDimensionId) {
+			return new SaveResult(false, invalidDimensionId);
+		}
+
+		public static SaveResult writeFailedResult() {
+			return new SaveResult(false, null);
+		}
 	}
 }
