@@ -13,4 +13,14 @@ class RenewableLavaRulesTest {
 		assertFalse(RenewableLavaRules.evaluate(true, false, true));
 		assertFalse(RenewableLavaRules.evaluate(true, true, false));
 	}
+
+	@Test
+	void sourceEligibilityUsesRequiredHorizontalSourceThreshold() {
+		assertFalse(RenewableLavaRules.hasRequiredSourceNeighbours(1, 2));
+		assertTrue(RenewableLavaRules.hasRequiredSourceNeighbours(2, 2));
+		assertFalse(RenewableLavaRules.hasRequiredSourceNeighbours(2, 3));
+		assertTrue(RenewableLavaRules.hasRequiredSourceNeighbours(3, 3));
+		assertFalse(RenewableLavaRules.hasRequiredSourceNeighbours(2, 4));
+		assertTrue(RenewableLavaRules.hasRequiredSourceNeighbours(4, 4));
+	}
 }
