@@ -3,7 +3,7 @@
 	"package": "dev.dangeroni.renewablelava.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-		"ExampleMixin"
+		"FlowingFluidMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
