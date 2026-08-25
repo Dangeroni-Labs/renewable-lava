@@ -19,6 +19,13 @@ sourceSets.main.resources {
     exclude("src/generated/**/.cache")
 }
 
+sourceSets {
+    test {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath + sourceSets.main.runtimeClasspath
+    }
+}
+
 repositories {
 }
 
@@ -71,6 +78,9 @@ configurations {
 }
 
 dependencies {
+    testImplementation platform('org.junit:junit-bom:5.13.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
@@ -106,6 +116,10 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' }
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
+}
 
 idea {
     module {
