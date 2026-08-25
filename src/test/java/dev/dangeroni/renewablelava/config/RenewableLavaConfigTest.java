@@ -21,7 +21,8 @@ class RenewableLavaConfigTest {
 	@Test
 	void acceptsValidDimensionIdentifiersAndSkipsMalformedOnes() {
 		Set<Identifier> whitelist = RenewableLavaConfig.sanitizeWhitelistDimensions(
-			java.util.List.of("minecraft:overworld", "bad id", "example:custom")
+			java.util.List.of("minecraft:overworld", "bad id", "example:custom"),
+			false
 		);
 
 		assertTrue(whitelist.contains(Identifier.withDefaultNamespace("overworld")));
@@ -39,7 +40,7 @@ class RenewableLavaConfigTest {
 		whitelist.add("not valid");
 		root.add("whitelistDimensions", whitelist);
 
-		RenewableLavaConfig config = RenewableLavaConfig.fromJson(root);
+		RenewableLavaConfig config = RenewableLavaConfig.fromJson(root, false);
 
 		assertTrue(config.enabled());
 		assertEquals(4, config.requiredSourceNeighbours());

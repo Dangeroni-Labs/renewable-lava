@@ -73,9 +73,13 @@ public final class RenewableLavaConfig {
 	}
 
 	static RenewableLavaConfig fromJson(JsonObject root) {
+		return fromJson(root, true);
+	}
+
+	static RenewableLavaConfig fromJson(JsonObject root, boolean logWarnings) {
 		boolean enabled = readEnabled(root);
 		int requiredSourceNeighbours = readRequiredSourceNeighbours(root);
-		Set<Identifier> whitelistDimensions = readWhitelistDimensions(root);
+		Set<Identifier> whitelistDimensions = readWhitelistDimensions(root, logWarnings);
 		return new RenewableLavaConfig(enabled, requiredSourceNeighbours, whitelistDimensions);
 	}
 
@@ -108,11 +112,17 @@ public final class RenewableLavaConfig {
 	}
 
 	static Set<Identifier> sanitizeWhitelistDimensions(List<String> dimensionIds) {
+		return sanitizeWhitelistDimensions(dimensionIds, true);
+	}
+
+	static Set<Identifier> sanitizeWhitelistDimensions(List<String> dimensionIds, boolean logWarnings) {
 		LinkedHashSet<Identifier> whitelist = new LinkedHashSet<>();
 		for (String dimensionId : dimensionIds) {
 			Identifier parsed = Identifier.tryParse(dimensionId);
 			if (parsed == null) {
-				RenewableLava.LOGGER.warn("Ignoring malformed dimension id '{}' in renewable lava config.", dimensionId);
+				if (logWarnings) {
+					RenewableLava.LOGGER.warn("Ignoring malformed dimension id '{}' in renewable lava config.", dimensionId);
+				}
 				continue;
 			}
 
@@ -150,7 +160,7 @@ public final class RenewableLavaConfig {
 		return sanitizeRequiredSourceNeighbours(element.getAsInt());
 	}
 
-	private static Set<Identifier> readWhitelistDimensions(JsonObject root) {
+	private static Set<Identifier> readWhitelistDimensions(JsonObject root, boolean logWarnings) {
 		JsonElement element = root.get("whitelistDimensions");
 		if (element == null) {
 			return sanitizeWhitelistDimensions(DEFAULT_WHITELIST_DIMENSIONS);
@@ -172,7 +182,7 @@ public final class RenewableLavaConfig {
 			dimensionIds.add(entry.getAsString());
 		}
 
-		return sanitizeWhitelistDimensions(List.copyOf(dimensionIds));
+		return sanitizeWhitelistDimensions(List.copyOf(dimensionIds), logWarnings);
 	}
 
 	private static void writeDefaults(Path path, RenewableLavaConfig config) {
