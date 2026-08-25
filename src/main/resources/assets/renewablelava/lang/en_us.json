@@ -1,0 +1,13 @@
+{
+  "itemGroup.renewablelava": "Example Mod Tab",
+  "block.renewablelava.example_block": "Example Block",
+  "item.renewablelava.example_item": "Example Item",
+
+  "renewablelava.configuration.title": "Renewable Lava Configs",
+  "renewablelava.configuration.section.renewablelava.common.toml": "Renewable Lava Configs",
+  "renewablelava.configuration.section.renewablelava.common.toml.title": "Renewable Lava Configs",
+  "renewablelava.configuration.items": "Item List",
+  "renewablelava.configuration.logDirtBlock": "Log Dirt Block",
+  "renewablelava.configuration.magicNumberIntroduction": "Magic Number Text",
+  "renewablelava.configuration.magicNumber": "Magic Number"
+}
