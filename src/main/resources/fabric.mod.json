@@ -3,15 +3,17 @@
 	"id": "renewable_lava",
 	"version": "${version}",
 	"name": "Renewable Lava",
-	"description": "Makes lava renewable using vanilla-style source conversion rules.",
+	"description": "Adds vanilla-style renewable lava source generation, allowing lava to form renewable 2x2 source pools like water.",
 	"authors": [
-		"Dangeroni"
+		"Dangeroni Labs"
 	],
 	"contact": {
-		"sources": "https://github.com/Dangeroni-Labs/renewable-lava"
+		"homepage": "https://github.com/Dangeroni-Labs/renewable-lava",
+		"sources": "https://github.com/Dangeroni-Labs/renewable-lava",
+		"issues": "https://github.com/Dangeroni-Labs/renewable-lava/issues"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/renewable-lava/icon.png",
+	"icon": "assets/renewable_lava/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

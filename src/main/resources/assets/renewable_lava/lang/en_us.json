@@ -1,0 +1,5 @@
+{
+	"modmenu.nameTranslation.renewable_lava": "Renewable Lava",
+	"modmenu.summaryTranslation.renewable_lava": "Vanilla-style renewable lava source generation.",
+	"modmenu.descriptionTranslation.renewable_lava": "Allows lava to form renewable source pools using vanilla-like water source mechanics."
+}
