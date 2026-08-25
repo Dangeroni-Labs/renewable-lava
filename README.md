@@ -1,9 +1,29 @@
 # Renewable Lava
 
-## Setup
+Vanilla-style renewable lava source generation for Minecraft.
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+Renewable Lava allows lava to form renewable source pools using water-like source mechanics.
+
+## Downloads
+
+- [GitHub Releases](https://github.com/Dangeroni-Labs/renewable-lava/releases/)
+- CurseForge
+
+## Supported versions
+
+| Minecraft | Fabric | NeoForge |
+| --- | --- | --- |
+| 26.2 | Yes | Yes |
+
+## Branches
+
+- `26.2-fabric`
+- `26.2-neoforge`
+
+## Website
+
+https://dangeroni-labs.github.io/renewable-lava/
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+MIT
