@@ -522,7 +522,7 @@ img {
 	max-width: 720px;
 }
 
-.config-copy > p:last-of-type {
+.config-copy > p:last-child {
 	margin: 0;
 
 	color: var(--foreground-secondary);
@@ -531,11 +531,29 @@ img {
 	line-height: 1.8;
 }
 
+.config-preview {
+	margin: 42px 0 0;
+
+	overflow: hidden;
+
+	border: 1px solid var(--border);
+	border-radius: var(--radius-medium);
+
+	background: #08090a;
+}
+
+.config-preview img {
+	width: 100%;
+	height: auto;
+
+	display: block;
+}
+
 .config-list {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 
-	margin-top: 42px;
+	margin-top: 32px;
 
 	border-top: 1px solid var(--border);
 	border-bottom: 1px solid var(--border);
