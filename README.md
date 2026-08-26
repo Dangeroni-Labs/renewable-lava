@@ -22,4 +22,4 @@ https://dangeroni-labs.vercel.app/mods/renewable-lava
 
 ## License
 
-MIT
+[MIT](LICENSE)
