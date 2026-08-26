@@ -1,9 +1,7 @@
-# Renewable Lava
+# Kossman's Renewable Lava
 
-## Setup
+Fabric branch for Minecraft 26.2.
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+Repository: https://github.com/Dangeroni-Labs/renewable-lava/tree/main
 
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+Renewable Lava allows lava to form renewable source pools using water-like source mechanics.
