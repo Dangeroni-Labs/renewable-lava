@@ -7,7 +7,8 @@ Renewable Lava allows lava to form renewable source pools using water-like sourc
 ## Downloads
 
 - [GitHub Releases](https://github.com/Dangeroni-Labs/renewable-lava/releases/)
-- CurseForge
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/kossmans-renewable-lava)
+- [Modrinth](https://modrinth.com/mod/kossmans-renewable-lava)
 
 ## Supported versions
 
