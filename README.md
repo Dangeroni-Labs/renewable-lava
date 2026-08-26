@@ -11,18 +11,13 @@ Renewable Lava allows lava to form renewable source pools using water-like sourc
 
 ## Supported versions
 
-| Minecraft | Fabric | NeoForge |
+| Minecraft | [Fabric](https://github.com/Dangeroni-Labs/renewable-lava/tree/26.2-fabric) | [NeoForge](https://github.com/Dangeroni-Labs/renewable-lava/tree/26.2-neoforge) |
 | --- | --- | --- |
 | 26.2 | Yes | Yes |
 
-## Branches
-
-- `26.2-fabric`
-- `26.2-neoforge`
-
 ## Website
 
-https://dangeroni-labs.github.io/renewable-lava/
+https://dangeroni-labs.vercel.app/mods/renewable-lava
 
 ## License
 
